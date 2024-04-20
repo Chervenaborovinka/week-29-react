@@ -1,0 +1,19 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    list-style: none;
+}
+
+li {
+    font-size: 25px;
+
+}

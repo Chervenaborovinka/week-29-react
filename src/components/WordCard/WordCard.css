@@ -1,0 +1,19 @@
+.word-card {
+    width: 20em;
+    height: 15rem;
+    background-color: rgb(208, 208, 91);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.word-card p {
+    font-size: 25px;
+    margin: 10;
+
+}
+
+.word-card p:last-child {
+    font-style: italic;
+}
