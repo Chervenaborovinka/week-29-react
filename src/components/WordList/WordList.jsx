@@ -3,7 +3,7 @@ import WordContext from '../WordContext/WordContext';
 
 const WordList = () => {
     const {
-        response: words,
+        words,
         loading,
         error,
     } = WordContext('http://itgirlschool.justmakeit.ru/api/words');

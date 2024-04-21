@@ -18,9 +18,6 @@ function Header() {
                     <li>
                         <Link to="/game">Game</Link>
                     </li>
-                    <li>
-                        <Link to="/text">Text</Link>
-                    </li>
                 </ul>
             </nav>
         </div>

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import WordCard from "../WordCard/WordCard";
 import "./WordCarousel.css";
+import WordContext from "../WordContext/WordContext";
 
-const WordCarousel = ({words})=> {
+const WordCarousel = ()=> {
+    const {words} = useContext(WordContext);
+    
     const [currentIndex, setCurrentIndex] = useState(0);
     const [learnedWordsCount, setLearnedWordsCount] = useState(0);
 

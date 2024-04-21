@@ -15,8 +15,8 @@ function App() {
         <Header />
     
         <Routes>
-          <Route path="/" element={<Table/>} />
-          <Route path="/table" element={<Table/>} />
+          <Route path="/" element={<WordList/>} />
+          <Route path="/table" element={<WordList/>} />
           <Route path="/game" element={<WordCarousel/>} />
           <Route path="*" element={<ErrorComponent />} />
         </Routes>
