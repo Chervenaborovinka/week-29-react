@@ -1,0 +1,42 @@
+.table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    margin: 1em 10em 0 10em;
+    border: 2px solid #483D8B;
+    border-radius: 10px;
+    background-color: rgb(226, 226, 123);
+    border-color: #483D8B; 
+}
+
+.wordcolumn{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px magenta;
+}
+
+.wordrow{
+    display: flex;
+    flex-direction: row;
+    border: solid 2px green;
+}
+
+.table button {
+    background-color: #483D8B;
+    color: rgb(51, 30, 30);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.table button:hover {
+    background-color: #2F4F4F;
+}
+
+.border__error{
+    border: 1px solid red;
+}

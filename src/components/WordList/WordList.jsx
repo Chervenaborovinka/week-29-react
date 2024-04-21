@@ -1,5 +1,6 @@
 import React from "react";
 import WordContext from '../WordContext/WordContext';
+import styles from './WordList.module.css';
 
 const WordList = () => {
     const {
@@ -9,18 +10,18 @@ const WordList = () => {
     } = WordContext('http://itgirlschool.justmakeit.ru/api/words');
     
     return(
-        <div>
+        <div className={styles.table}>
             {loading ? (<p>Loading...</p>
             ) : error ? (<p>
 
             {error.message}</p>
             ) : (
-                <ul>
+                <ul className={styles.wordcolumn}>
                 {words.map((word) => (
-                    <li>
-                    <span>{word.english}</span>
-                    <span>{word.transcription}</span>
-                    <span>{word.russian}</span>
+                    <li className={styles.wordrow}>
+                    <div >{word.english}</div>
+                    <div>{word.transcription}</div>
+                    <div>{word.russian}</div>
                     </li>
                 ))}
                 </ul>
