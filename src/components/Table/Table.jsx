@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import words from "МОжет здесь вставить апи??"
+import React, { useContext, useState } from "react";
 import styles from "./Table.module.css";
+import WordContext from "../WordContext/WordContext";
 
 const Table = () => {
+
+    const {words} = useContext(WordContext);
 
     return (
         <div className={styles.table}>

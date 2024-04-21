@@ -4,8 +4,8 @@ import WordCarousel from './components/WordCarousel/WordCarousel';
 import Table from "./components/Table/Table";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
-import words from "а здесь что?";
 import ErrorComponent from './components/ErrorComponent/ErrorComponent';
+import WordList from './components/WordList/WordList';
 
 function App() {
   return (
@@ -15,11 +15,12 @@ function App() {
         <Header />
     
         <Routes>
-          <Route path="/" element={<Table words={words} />} />
-          <Route path="/table" element={<Table words={words} />} />
-          <Route path="/game" element={<WordCarousel words={words} />} />
+          <Route path="/" element={<Table/>} />
+          <Route path="/table" element={<Table/>} />
+          <Route path="/game" element={<WordCarousel/>} />
           <Route path="*" element={<ErrorComponent />} />
         </Routes>
+        <WordList/>
       </div >
     </Router >
   );
