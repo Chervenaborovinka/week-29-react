@@ -1,42 +1,133 @@
-import React, { useContext } from 'react';
-import WordContext from '../WordContext/WordContext';
+import React, { useState } from "react";
+import words from "МОжет здесь вставить апи??"
+import styles from "./Table.module.css";
 
 const Table = () => {
-    const { words, updateWord, deleteWord } = useContext(WordContext);
-
-    const handleUpdate = (updatedWord) => {
-        updateWord(updatedWord);
-    };
-
-    const handleDelete = (wordId) => {
-        deleteWord(wordId);
-    };
 
     return (
-        <table>
-            <thead>
+        <div className={styles.table}>
+            <table className="table-rows">
                 <tr>
-                    <th>ID</th>
-                    <th>Word</th>
-                    <th>Translation</th>
-                    <th>Action</th>
+                    <th>#</th>
+                    <th>English</th>
+                    <th>Transcription</th>
+                    <th>Russian</th>
+                    <th>Buttons</th>
                 </tr>
-            </thead>
-            <tbody>
-                {words.map((word) => (
-                    <tr key={word.id}>
-                        <td>{word.id}</td>
-                        <td>{word.word}</td>
-                        <td>{word.translation}</td>
-                        <td>
-                            <button onClick={() => handleUpdate({ id: word.id, word: 'Updated Word', translation: 'Updated Translation' })}>Update</button>
-                            <button onClick={() => handleDelete(word.id)}>Delete</button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+                {words.map((word) => {
+
+                    return <TableRow rowData={word} key={word.id} />;
+
+                })}
+            </table>
+        </div>
     );
+
 };
 
 export default Table;
+
+const TableRow = ({ rowData }) => {
+    const { id, english, transcription, russian } = rowData;
+    const [isSelected, setIsSelected] = useState(false);
+    const [value, setValue] = useState({
+        id,
+        english,
+        transcription,
+        russian,
+    });
+
+
+    const [emptyFields,setEmptyFields] = useState({
+        id: false,
+        english: false,
+        transcription:false,
+        russian:false,
+    }) 
+
+
+    function handleClose() {
+        setIsSelected(!isSelected);
+        setValue({ ...rowData });
+        setEmptyFields([]);
+    }
+
+    function handleSave() {
+        if (value.word.match(/[а-яА-Я]/g)){
+            setEmptyFields({...emptyFields, word:"Please, fill in english"});
+        } else {
+            setValue({ ...value });
+            setIsSelected(!isSelected);
+            setEmptyFields([]);
+        }
+    }
+
+    function handleEdit() {
+        setIsSelected(!isSelected);
+    }
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setValue((prevValue) => {
+            return { ...prevValue, [name]: value };
+        });
+        setEmptyFields({...emptyFields,
+            [name]:
+            value.trim()=== "" ? "Field is empty" : false,
+        });
+    }
+
+
+    const btnDisabled = Object.values(emptyFields).some((elem)=>elem)
+
+    return isSelected ? (
+        <tr>
+            <td>
+                <td>{value.id}</td>
+            </td>
+            <td>
+                <input
+                    type="text"
+                    value={value.english}
+                    name={"english"}
+                    onChange={handleChange}
+                    className={emptyFields.english ? styles.border__error : ''}
+                />
+                <p>{emptyFields.english && emptyFields.english  }</p>
+            </td>
+            <td>
+                <input
+                    type="text"
+                    value={value.transcription}
+                    name={"transcription"}
+                    onChange={handleChange}
+                    className={emptyFields.transcription ? styles.border__error : ''}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    value={value.russian}
+                    name={"russian"}
+                    onChange={handleChange}  
+                    className={emptyFields.russian ? styles.border__error : ''}
+                />
+            </td>
+            <button disabled={btnDisabled} onClick={handleSave}>Save</button>
+            <button onClick={handleClose}>Close</button>
+        </tr>
+    ) : (
+        <tr>
+            <td>{id}</td>
+            <td>{value.english}</td>
+            <td>{value.transcription}</td>
+            <td>{value.russian}</td>
+            <td>
+                <td>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </td>
+        </tr>
+    );
+};
