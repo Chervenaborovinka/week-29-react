@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Table.module.css";
 import WordContext from "../WordContext/WordContext";
 
 const Table = () => {
 
-    const {words} = useContext(WordContext);
+    const {words} = WordContext('http://itgirlschool.justmakeit.ru/api/words');
 
     return (
         <div className={styles.table}>
@@ -55,7 +55,7 @@ const TableRow = ({ rowData }) => {
     }
 
     function handleSave() {
-        if (value.word.match(/[а-яА-Я]/g)){
+        if (value.english.match(/[а-яА-Я]/g)){
             setEmptyFields({...emptyFields, word:"Please, fill in english"});
         } else {
             setValue({ ...value });
