@@ -34,12 +34,12 @@ const WordCarousel = ()=> {
                     </button>
                 </div>
 
-                {words.map((words, index) => (
+                {words.map((word, index) => (
                     <div key={index} style={{ display: index === currentIndex ? "block" : "none" }} >
                         <WordCard
-                            word={words.word}
-                            transcription={words.transcription}
-                            translation={words.translation}
+                            word={word.word}
+                            transcription={word.transcription}
+                            translation={word.translation}
                             counter={handleWordsLearned}
                         />
                     </div>

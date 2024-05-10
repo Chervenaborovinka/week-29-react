@@ -56,7 +56,7 @@ const TableRow = ({ rowData }) => {
 
     function handleSave() {
         if (value.english.match(/[а-яА-Я]/g)){
-            setEmptyFields({...emptyFields, word:"Please, fill in english"});
+            setEmptyFields({...emptyFields, english:"Please, fill in english"});
         } else {
             setValue({ ...value });
             setIsSelected(!isSelected);
